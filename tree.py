@@ -18,12 +18,12 @@ def create_markdown_tree(node, path=""):
         dir_name = node["name"]
         new_path = path + dir_name + "/"
         content = [f"{nl}<details>\n<summary>{dir_name}</summary>\n"]
-        
+      
         prevType = node["type"]
         # Recursively process all children (files and sub-directories)
         for child in node["contents"]:
             content.append(create_markdown_tree(child, new_path))
-        
+      
         nl = "" if prevType == (node["type"] or "") else "\n"
         content.append(f"{nl}</details>\n")
         prevType = node["type"]
